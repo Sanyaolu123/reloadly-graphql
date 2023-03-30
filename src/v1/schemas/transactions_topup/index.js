@@ -1,11 +1,10 @@
 'use strict'
 
 const { GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLInt, GraphQLList, GraphQLFloat } = require('graphql')
-const { GraphQLJSON, GraphQLDID, GraphQLDate } = require('graphql-scalars')
 
 
 const TransactionContentType = new GraphQLObjectType({
-  name: 'transactioncontents',
+  name: 'transactioncontents_topup',
   description: 'Transaction Contents',
   fields: () => ({
     transactionId: { type: GraphQLInt },
@@ -20,13 +19,13 @@ const TransactionContentType = new GraphQLObjectType({
   })
 })
 
-const TransactionsType = new GraphQLObjectType({
-  name: 'transactions',
-  description: 'This is to get list of transactions',
+const TransactionsTopupType = new GraphQLObjectType({
+  name: 'transactions_topup',
+  description: 'This is to get list of topup transactions',
   fields: () => ({
     content: { type: new GraphQLList(TransactionContentType) },
     totalElements: { type: GraphQLInt }
   })
 })
 
-module.exports = { TransactionsType }
+module.exports = { TransactionsTopupType }
